@@ -1,12 +1,15 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const Timeline = props => {
+const Timeline = () => {
+
+    const chirps = useSelector(globalState => globalState.chirps.list);
+
 	return (
 		<div>
 			<h2>Timeline</h2>
 			<hr />
 			<ul>
-				{props.chirps.map(chirp => (
+				{chirps.map(chirp => (
 					<li>{chirp}</li>
 				))}
 			</ul>
@@ -14,8 +17,4 @@ const Timeline = props => {
 	);
 };
 
-const mapStateToProps = state => {
-	return { chirps: state.chirps.list };
-};
-
-export default connect(mapStateToProps)(Timeline);
+export default Timeline;
